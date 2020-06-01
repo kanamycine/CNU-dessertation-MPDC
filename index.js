@@ -62,7 +62,8 @@ console.log(`분기파이프 마찰 손실수두 주손실 ${majorFrictionOfDivi
 
 //분기파이프 마찰손실수두 부손실(곡관) 0.986은 만곡각이 90도이고 곡률반경이 0인 굴절관의 만곡부 손실계수이다.
 let minorFrictionOfDividedPipeByCurved =
-  (0.986 * Math.pow(velocityOfWaterForDevidePipe, 2)) / (2 * 9.81);
+  ((0.986 * Math.pow(velocityOfWaterForDevidePipe, 2)) / (2 * 9.81)) *
+  numberOfFacility;
 console.log(
   `분기파이프 마찰 손실수두 부손실(곡관) ${minorFrictionOfDividedPipeByCurved}`
 );
@@ -73,9 +74,10 @@ let ReductionCoefficient =
 
 //분기파이프 마찰손실수두 부손실(급축소)
 let minorFrictionOfDiviedPipeByReduction =
-  (Math.pow(1 / ReductionCoefficient - 1, 2) *
+  ((Math.pow(1 / ReductionCoefficient - 1, 2) *
     Math.pow(velocityOfWaterForTerminalPipe, 2)) /
-  (2 * 9.81);
+    (2 * 9.81)) *
+  numberOfTerminalPipe;
 console.log(
   `분기파이프 마찰 손실수두 부손실(급축소) ${minorFrictionOfDiviedPipeByReduction}`
 );
@@ -89,7 +91,9 @@ console.log(`말단파이프 마찰손실수두 주손실 ${majorFrictionOfTerma
 
 //말단파이프 마찰손실수두 부손실(곡관)
 let minorFrictionOfTermainalPipeByCurved =
-  (0.986 * Math.pow(velocityOfWaterForTerminalPipe, 2)) / (2 * 9.81);
+  ((0.986 * Math.pow(velocityOfWaterForTerminalPipe, 2)) / (2 * 9.81)) *
+  numberOfFacility *
+  numberOfTerminalPipe;
 console.log(
   `말단파이프 마찰손실수두 주손실(곡관) ${minorFrictionOfTermainalPipeByCurved}`
 );
@@ -98,9 +102,9 @@ console.log(
 let AmountofFriction =
   majorFrictionOfDiviededPipe +
   majorFrictionOfTermainalPipe +
-  minorFrictionOfDividedPipeByCurved * numberOfFacility +
-  minorFrictionOfTermainalPipeByCurved * numberOfTerminalPipe +
-  minorFrictionOfDiviedPipeByReduction * numberOfTerminalPipe;
+  minorFrictionOfDividedPipeByCurved +
+  minorFrictionOfTermainalPipeByCurved +
+  minorFrictionOfDiviedPipeByReduction;
 
 console.log(ReviseDiameterOfTerminalPipe);
 console.log(ReviseDiameterOfDividePipe);
