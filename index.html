@@ -1,12 +1,330 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MPDC - Jinyeong choi</title>
+    <title>MDPC - jinyeong choi</title>
+    <meta
+      name="description"
+      content="Modulization of Pipe Design system Computation"
+    />
+    <meta name="author" content="Samuel" />
+    <link rel="icon" type="img/png" href="favicon1.png" />
+    <script
+      src="https://kit.fontawesome.com/e156ac3480.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- font-family: 'Open Sans', sans-serif;  -->
+    <script src="main.js" defer></script>
   </head>
   <body>
-    <h1>모듈 관경 산정 및 펌프 용량 산정</h1>
-    <script src="index.js"></script>
+    <!-- Navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <i class="fas fa-circle" style="color: #8CD790;"></i>
+        <a href="#">MDPC</a>
+      </div>
+        <ul class="navbar__menu">
+          <li class="navbar__menu__item active" data-link="#home">Home</li>
+          <li class="navbar__menu__item" data-link="#about">About</li>
+          <li class="navbar__menu__item" data-link="#skills">Principle</li>
+          <li class="navbar__menu__item" data-link="#work">Reference</li>
+          <!-- <li class="navbar__menu__item" data-link="#testimonials">Manual</li> -->
+          <li class="navbar__menu__item" data-link="#contact">Contact</li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Toggle button -->
+    <button class="navbar__toggle-btn">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Home -->
+    <section id="home">
+      <img src="img/kanamycine sameul_choi.png" alt="kanamycineStudio" class="avatar" />
+      <h1 class="home__title">
+         MDPC <br />
+         관수 파이프 관경 및 모터 용량 산정 프로그램 🙄
+      </h1>
+      <h2 class="home__description">
+        수리학과 유체역학에 근거하여, 관수 설계에 보다 과학적으로 접근할 수 있습니다.
+      </h2>
+      <button class="home__contactme">Contact Me</button>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section section__container">
+      <h1>About Me</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum,
+        voluptatibus nostrum? Quasi aliquid quidem asperiores fugiat quod
+        facilis obcaecati veniam dignissimos repellat doloribus. Porro, vero?
+        Architecto odit doloremque eum placeat!
+      </p>
+      <div class="about__major">
+        <div class="major">
+          <div class="major__icon"><i class="fas fa-water"></i></div>
+          <h2 class="major__title">Hydraulics</h2>
+          <div class="major__description">
+            유체역학, 수리학에 근거하여 <br />
+            달시웨버 공식, 매닝 공식과 마찰 손실 수두를 사용하였습니다. 
+          </div>
+        </div>
+        <div class="major">
+          <div class="major__icon"><i class="fas fa-code"></i></div>
+          <h2 class="major__title">Software</h2>
+          <div class="major__description">
+            HTML, CSS, Javascript, TypeScript <br />
+            프레임 워크를 사용하지 않고, 기초적인 소프트웨어 언어로 작성 되었습니다. 
+          </div>
+        </div>
+        <div class="major">
+          <div class="major__icon"><i class="fas fa-tractor"></i></div>
+          <h2 class="major__title">Agriculture</h2>
+          <div class="major__description">
+            효율적인 송수를 위한 첫번째 과정인 관수로 설계를 </br>
+            농학적 관점으로 재해석 하였습니다.
+          </div>
+        </div>
+      </div>
+      <div class="about__jobs">
+        <div class="job">
+          <img src="img/jobs/jnu.png" alt="cnu" class="job__logo" />
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="section__container">
+      <h1>Skills</h1>
+      <h2>Skills & Attributes</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, fuga
+        magni enim nesciunt ducimus velit ipsa ullam voluptate delectus eaque,
+        dignissimos fugiat, consectetur suscipit voluptates molestiae error
+        quasi ea excepturi!
+      </p>
+      <div class="skillset">
+      <div class="skillset__left">
+        <h3 class="skillset__title">Skills</h3>
+        <div class="skill">
+          <div class="skill_description">
+            <span>HTML</span>
+            <span>99%</span>
+          </div>
+          <div class="skill__bar">
+            <div class="skill_value" style="width:99%"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill_description">
+            <span>CSS</span>
+            <span>99%</span>
+          </div>
+          <div class="skill__bar">
+            <div class="skill_value"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill_description">
+            <span>JavaScript</span>
+            <span>99%</span>
+          </div>
+          <div class="skill__bar">
+            <div class="skill_value"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill_description">
+            <span>React</span>
+            <span>99%</span>
+          </div>
+          <div class="skill__bar">
+            <div class="skill_value"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill_description">
+            <span>Vue</span>
+            <span>99%</span>
+          </div>
+          <div class="skill__bar">
+            <div class="skill_value"></div>
+          </div>
+        </div>
+      </div>
+      <div class="skillset__right">
+        <div class="tools">
+          <h3 class="skillset__title">Tools</h3>
+          <ul class="tools__list">
+            <li><span>Visual Studio Code</span></li>
+            <li><span>Atom</span></li>
+            <li><span>IntelliJ</span></li>
+            <li><span>IOS development tools</span></li>
+            <li><span>Sketch App</span></li>
+          </ul>
+        </div>
+        <div class="etc">
+          <h3 class="skillset__title">Etc</h3>
+          <ul class="etc__list">
+            <li><span>Git</span></li>
+            <li><span>Scrum Master</span></li>
+            <li><span>Agriculture</span></li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="section">
+      <div class="section__container">
+        <h1>My works</h1>
+      <h3>Projects</h3>
+      <div class="work__categories">
+        <button class="caregory__btn">
+          All <span class="category__count">4</span>
+        </button>
+        <button class="caregory__btn">
+          FrontEnd <span class="category__count">1</span>
+        </button>
+        <button class="caregory__btn">
+          Mobile <span class="category__count">3</span>
+        </button>
+        <button class="caregory__btn">
+          BackEnd <span class="category__count">2</span>
+        </button>
+      </div>
+
+      <div class="work__projects">
+        <a href="https://github.com/Kanamycine" class="project" target="blank">
+          <img src="img/project/navba.png" alt="creatingNavbar" />
+          <div class="project__description">
+            <h3>Navbar</h3>
+            <span>Creating a new reactive navbar with HTML, CSS, JS. </span>
+          </div>
+        </a>
+        <a href="https://github.com/Kanamycine" class="project" target="blank">
+          <img src="img/project/navba.png" alt="creatingNavbar" />
+          <div class="project__description">
+            <h3>Navbar</h3>
+            <span>Creating a new reactive navbar with HTML, CSS, JS. </span>
+          </div>
+        </a>
+        <a href="https://github.com/Kanamycine" class="project" target="blank">
+          <img src="img/project/navba.png" alt="creatingNavbar" />
+          <div class="project__description">
+            <h3>Navbar</h3>
+            <span>Creating a new reactive navbar with HTML, CSS, JS. </span>
+          </div>
+        </a>
+        <a href="https://github.com/Kanamycine" class="project" target="blank">
+          <img src="img/project/navba.png" alt="creatingNavbar" />
+          <div class="project__description">
+            <h3>Navbar</h3>
+            <span>Creating a new reactive navbar with HTML, CSS, JS. </span>
+          </div>
+        </a>
+        <a href="https://github.com/Kanamycine" class="project" target="blank">
+          <img src="img/project/navba.png" alt="creatingNavbar" />
+          <div class="project__description">
+            <h3>Navbar</h3>
+            <span>Creating a new reactive navbar with HTML, CSS, JS. </span>
+          </div>
+        </a>
+        <a href="https://github.com/Kanamycine" class="project" target="blank">
+          <img src="img/project/navba.png" alt="creatingNavbar" />
+          <div class="project__description">
+            <h3>Navbar</h3>
+            <span>Creating a new reactive navbar with HTML, CSS, JS. </span>
+          </div>
+        </a>
+        <a href="https://github.com/Kanamycine" class="project" target="blank">
+          <img src="img/project/navba.png" alt="creatingNavbar" />
+          <div class="project__description">
+            <h3>Navbar</h3>
+            <span>Creating a new reactive navbar with HTML, CSS, JS. </span>
+          </div>
+        </a>
+        <a href="https://github.com/Kanamycine" class="project" target="blank">
+          <img src="img/project/navba.png" alt="creatingNavbar" />
+          <div class="project__description">
+            <h3>Navbar</h3>
+            <span>Creating a new reactive navbar with HTML, CSS, JS. </span>
+          </div>
+        </a>
+      </div>
+      </div>
+    </section>
+
+    <!-- Testmonials
+    <section id="testimonials" class="section">
+      <div class="section__container">
+        <h1>Testmonials</h1>
+        <h3>See what they say about me</h3>
+      <div class="testimonials">
+        <div class="testimonial">
+          <img
+            src="img/teestimonial/peterson.png"
+            alt="peterson"
+            class="testmonial_avartar"
+            style="margin-left:0px;"
+          />
+          <div class="testimonial__speech-bubble">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+              molestiae, optio ipsa pariatur obcaecati enim eum nemo quisquam
+              quas fuga quam aliquid? Natus iure unde tempora quisquam enim
+              perspiciatis repellat.
+            </p>
+            <p class="name"><a href="">Perterson</a>/Samsung</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonials">
+        <div class="testimonial">
+          <div class="testimonial__speech-bubble">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+              molestiae, optio ipsa pariatur obcaecati enim eum nemo quisquam
+              quas fuga quam aliquid? Natus iure unde tempora quisquam enim
+              perspiciatis repellat.
+            </p>
+            <p class="name"><a href="">Perterson</a>/Samsung</p>
+          </div>
+          <img
+            src="img/teestimonial/peterson.png"
+            alt="peterson"
+            class="testmonial_avartar"
+            style="margin-right:0px;"
+          />
+        </div>
+      </div>
+      </div>
+    </section> -->
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h1 class="contact__title">Let's talk</h1>
+      <h2 class="contact__email">jiyneong5320@gmail.com</h2>
+      <div class="contact__links">
+        <a href="https://github.com/kanamycine" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <p class="contact__rights">2020 Kanamycine Studio- All rights reserved</p>
+    </section>
   </body>
 </html>
