@@ -451,11 +451,11 @@ p {
 }
 
 .testimonials {
-  margin: 40px;
+  margin: 18px;
 }
 
 .testimonial {
-  display: flex;
+  display: block;
 }
 
 #testimonials h1,
@@ -475,10 +475,14 @@ p {
   padding: 18px;
   background-color: var(--color-white);
   border-radius: var(--size-border-radius);
+  justify-content: center;
 }
 
 .testimonial__speech-bubble p {
   color: color var(--color-light-grey);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testimonial__speech-bubble a {
