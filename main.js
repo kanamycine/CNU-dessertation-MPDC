@@ -43,7 +43,7 @@ function terminalPipeDiameter() {
   // coefficientOfRoughnessPVC = 0.014;
 
   // //노즐 당 물량
-  waterQuantatyPerNozzel = prompt("말단 지관의 노즐당 물량은 ?");
+  waterQuantatyPerNozzel = prompt("말단 지관의 노즐 규격은?");
 
   // //말단 파이프 관경
   pipeDiameterOfTerminalPipe = Math.sqrt(
@@ -52,7 +52,7 @@ function terminalPipeDiameter() {
 
   ReviseDiameterOfTerminalPipe = pipeDiameterOfTerminalPipe * 10;
   alert(
-    `추천 되어지는 말단 관경의 크기는 ${ReviseDiameterOfTerminalPipe} mm 입니다.`
+    `추천 되어지는 말단 관경의 크기는 ${ReviseDiameterOfTerminalPipe} m 입니다.`
   );
 }
 
@@ -71,19 +71,22 @@ function dividePipeDiameter() {
   pipeDiameterOfTerminalPipe = prompt(
     "사용하실 말단 관경을 입력해 주세요. (단위 : m)"
   );
+
+  // //말단 파이프 수
+  numberOfTerminalPipe = prompt("하우스당 말단 지관의 수를 입력해주세요");
+
   pipeDiameterOfTerminalPipe = pipeDiameterOfTerminalPipe / 10;
   ReviseWaterQuantatyOfTerminalPipe =
     (Math.pow(pipeDiameterOfTerminalPipe, 2) * 3.14 * 2) /
     (coefficientOfRoughnessPVC * 4);
 
-  // //말단 파이프 수
-  numberOfTerminalPipe = prompt("하우스당 말단 지관의 수를 입력해주세요");
-
   // //말단 파이프 총 물량
   waterQuantatyPerTerminalPipe = ReviseWaterQuantatyOfTerminalPipe;
 
   // //분기 파이프 총 물량
-  waterQuantatyDevidePipe = waterQuantatyPerTerminalPipe * numberOfTerminalPipe;
+  waterQuantatyDevidePipe =
+    waterQuantatyPerTerminalPipe * (numberOfTerminalPipe / 2);
+  // 지관을 2개를 1개로 잡는 것에 대한 오류 때문에 2로 나누었습니다.
 
   // //분기파이프 관경(주관)
   pipeDiameterOfDevidePipe = Math.sqrt(
@@ -100,6 +103,7 @@ function dividePipeDiameter() {
 
 // page2
 //*******************************************************************************/
+let AmountofFriction;
 
 function Friction() {
   ReviseDiameterOfTerminalPipe = prompt(
@@ -146,14 +150,14 @@ function Friction() {
   console.log(`분기파이프 마찰 손실수두 주손실 ${majorFrictionOfDiviededPipe}`);
 
   //하우스 수
-  let numberOfFacility = prompt("하우스는 몇 동인지 입력해주세요.");
+  // let numberOfFacility = prompt("하우스는 몇 동인지 입력해주세요.");
 
   // //
 
   //분기파이프 마찰손실수두 부손실(곡관) 0.986은 만곡각이 90도이고 곡률반경이 0인 굴절관의 만곡부 손실계수이다.
   let minorFrictionOfDividedPipeByCurved =
     ((0.986 * Math.pow(velocityOfWaterForDevidePipe, 2)) / (2 * 9.81)) *
-    numberOfFacility;
+    numberOfTerminalPipe;
   console.log(
     `분기파이프 마찰 손실수두 부손실(곡관) ${minorFrictionOfDividedPipeByCurved}`
   );
@@ -161,7 +165,6 @@ function Friction() {
   //말단파이프 마찰손실수두 부손실(곡관)
   let minorFrictionOfTermainalPipeByCurved =
     ((0.986 * Math.pow(velocityOfWaterForTerminalPipe, 2)) / (2 * 9.81)) *
-    numberOfFacility *
     numberOfTerminalPipe;
   console.log(
     `말단파이프 마찰손실수두 주손실(곡관) ${minorFrictionOfTermainalPipeByCurved}`
@@ -184,7 +187,7 @@ function Friction() {
     `분기파이프 마찰 손실수두 부손실(급축소) ${minorFrictionOfDiviedPipeByReduction}`
   );
 
-  let AmountofFriction =
+  AmountofFriction =
     majorFrictionOfDiviededPipe +
     majorFrictionOfTermainalPipe +
     minorFrictionOfDividedPipeByCurved +
@@ -197,6 +200,23 @@ function Friction() {
 }
 
 // Page3 *******************************************************************/
+// 마력값 산정
+let suctionLift;
+let extra;
+let pumpPower;
+
+function pump() {
+  suctionLift = prompt("양정을 입력해 주세요. (물탱크와, 관의 높이 차) ");
+  extra = AmountofFriction - 1;
+  pumpPower =
+    0.22 *
+    ((waterQuantatyPerNozzel * 360 + 1) / 60) *
+    (suctionLift + AmountofFriction) *
+    (120 / 60) *
+    10;
+
+  alert(`추천 되어지는 펌프의 마력 값은 ${pumpPower} HP 입니다.`);
+}
 
 //총 마찰손실수두
 
@@ -204,3 +224,6 @@ function Friction() {
 // 화면정의서 만들기
 // input
 // 화면정의 모듈화
+
+// 논문에 흐름도 작성하기
+// 인풋 결과값
