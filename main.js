@@ -43,7 +43,9 @@ function terminalPipeDiameter() {
   // coefficientOfRoughnessPVC = 0.014;
 
   // //노즐 당 물량
-  waterQuantatyPerNozzel = prompt("말단 지관의 노즐 규격은?");
+  let nozzleStandard = prompt("말단 지관의 노즐 규격은? (L단위)");
+  let nozzleNumber = prompt("말단 지관의 노즐 개수는?");
+  waterQuantatyPerNozzel = (nozzleStandard * nozzleStandard) / 3600;
 
   // //말단 파이프 관경
   pipeDiameterOfTerminalPipe = Math.sqrt(
@@ -67,13 +69,13 @@ let ReviseDiameterOfDividePipe;
 let ReviseWaterQuantatyOfTerminalPipe;
 
 function dividePipeDiameter() {
+  // //말단 파이프 수
+  numberOfTerminalPipe = prompt("하우스당 말단 지관의 수를 입력해주세요");
+
   //말단 관경으로 물량구하기
   pipeDiameterOfTerminalPipe = prompt(
     "사용하실 말단 관경을 입력해 주세요. (단위 : m)"
   );
-
-  // //말단 파이프 수
-  numberOfTerminalPipe = prompt("하우스당 말단 지관의 수를 입력해주세요");
 
   pipeDiameterOfTerminalPipe = pipeDiameterOfTerminalPipe / 10;
   ReviseWaterQuantatyOfTerminalPipe =
