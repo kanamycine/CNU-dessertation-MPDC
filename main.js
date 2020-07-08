@@ -34,7 +34,7 @@ function scrollIntoView(selector) {
 // index.html
 //*******************************************************************************/
 const coefficientOfRoughnessPVC = 0.014;
-let waterQuantatyPerNozzel;
+let waterQuantatyPerTerminalPipeS;
 let pipeDiameterOfTerminalPipe;
 let ReviseDiameterOfTerminalPipe;
 
@@ -45,16 +45,15 @@ function terminalPipeDiameter() {
   // //노즐 당 물량
   let nozzleStandard = prompt("말단 지관의 노즐 규격은? (L단위)");
   let nozzleNumber = prompt("말단 지관의 노즐 개수는?");
-  waterQuantatyPerNozzel = (nozzleStandard * nozzleStandard) / 3600;
+  waterQuantatyPerTerminalPipeS = (nozzleStandard * nozzleStandard) / 3600;
 
   // //말단 파이프 관경
   pipeDiameterOfTerminalPipe = Math.sqrt(
-    (waterQuantatyPerNozzel * 4 * coefficientOfRoughnessPVC) / (3.14 * 2)
+    (waterQuantatyPerTerminalPipeS * 4 * coefficientOfRoughnessPVC) / (3.14 * 2)
   );
 
-  ReviseDiameterOfTerminalPipe = pipeDiameterOfTerminalPipe * 10;
   alert(
-    `추천 되어지는 말단 관경의 크기는 ${ReviseDiameterOfTerminalPipe} m 입니다.`
+    `추천 되어지는 말단 관경의 크기는 ${pipeDiameterOfTerminalPipe} m 입니다.`
   );
 }
 
@@ -77,29 +76,27 @@ function dividePipeDiameter() {
     "사용하실 말단 관경을 입력해 주세요. (단위 : m)"
   );
 
-  pipeDiameterOfTerminalPipe = pipeDiameterOfTerminalPipe / 10;
   ReviseWaterQuantatyOfTerminalPipe =
-    (Math.pow(pipeDiameterOfTerminalPipe, 2) * 3.14 * 2) /
+    (Math.pow(pipeDiameterOfTerminalPipe, 2) * 39.4384) /
     (coefficientOfRoughnessPVC * 4);
 
   // //말단 파이프 총 물량
   waterQuantatyPerTerminalPipe = ReviseWaterQuantatyOfTerminalPipe;
 
-  // //분기 파이프 총 물량
-  waterQuantatyDevidePipe =
-    waterQuantatyPerTerminalPipe * (numberOfTerminalPipe / 2);
-  // 지관을 2개를 1개로 잡는 것에 대한 오류 때문에 2로 나누었습니다.
+  // 분기 관경 산정하는 함수
+
+  function dividePipeDiameterCom() {
+    let arrOfTerminalPipeDiameter = new Array(numberOfTerminalPipe).fill(0);
+  }
 
   // //분기파이프 관경(주관)
   pipeDiameterOfDevidePipe = Math.sqrt(
-    (waterQuantatyDevidePipe * coefficientOfRoughnessPVC * 4) / (3.14 * 2)
+    (ReviseWaterQuantatyOfTerminalPipe * coefficientOfRoughnessPVC * 4) /
+      (3.14 * 2)
   );
 
-  ReviseDiameterOfDividePipe = pipeDiameterOfDevidePipe * 10;
-
-  // let ReviseDiameterOfTerminalPipe = pipeDiameterOfTerminalPipe * 10;
   alert(
-    `추천 되어지는 분기 관경의 크기는 ${ReviseDiameterOfDividePipe} m 입니다.`
+    `추천 되어지는 분기 관경의 크기는 ${pipeDiameterOfDevidePipe} m 입니다.`
   );
 }
 
