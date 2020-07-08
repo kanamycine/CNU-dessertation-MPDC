@@ -69,12 +69,14 @@ let ReviseWaterQuantatyOfTerminalPipe;
 
 function dividePipeDiameter() {
   // //말단 파이프 수
-  numberOfTerminalPipe = prompt("하우스당 말단 지관의 수를 입력해주세요");
-
-  //말단 관경으로 물량구하기
-  pipeDiameterOfTerminalPipe = prompt(
-    "사용하실 말단 관경을 입력해 주세요. (단위 : m)"
+  numberOfTerminalPipe = parseInt(
+    prompt("하우스당 말단 지관의 수를 입력해주세요")
   );
+  console.log(numberOfTerminalPipe);
+  //말단 관경으로 물량구하기
+  // pipeDiameterOfTerminalPipe = prompt(
+  //   "사용하실 말단 관경을 입력해 주세요. (단위 : m)"
+  // );
 
   ReviseWaterQuantatyOfTerminalPipe =
     (Math.pow(pipeDiameterOfTerminalPipe, 2) * 39.4384) /
@@ -85,14 +87,39 @@ function dividePipeDiameter() {
 
   // 분기 관경 산정하는 함수
 
-  function dividePipeDiameterCom() {
-    let arrOfTerminalPipeDiameter = new Array(numberOfTerminalPipe).fill(0);
+  // 사용자가 입력한 말단관경 수만큼 말단 관경을 저장할 배열 생성
+  let arrOfTerminalPipeDiameter = Array(numberOfTerminalPipe).fill(0);
+  console.log(arrOfTerminalPipeDiameter);
+  //사용자가 입력한 말단관경 수만큼 관경을 입력받아서 배열에 할당
+  for (let i = 0; i < arrOfTerminalPipeDiameter.length; i++) {
+    arrOfTerminalPipeDiameter[i] = prompt(
+      `말단 관경의 크기를 파이프별로 입력해주세요. ${
+        i + 1
+      }번 pipe 의 관경을 입력하세요 (단위 m)`
+    );
+    console.log(arrOfTerminalPipeDiameter);
+  }
+  // 각 말단관경의 물량을 저장할 배열 생성
+  let arrOfTerminalPipeWaterQuantaty = Array(numberOfTerminalPipe).fill(0);
+
+  // 각 말단관경의 관경을 통해 물량을 산출해내는 식과, 결과 값을 물량을 저장할 배열에 할당
+  for (i = 0; i < arrOfTerminalPipeWaterQuantaty.length; i++) {
+    arrOfTerminalPipeWaterQuantaty[i] =
+      (Math.pow(arrOfTerminalPipeDiameter[i], 2) * 39.4384) /
+      (coefficientOfRoughnessPVC * 4);
+    console.log(arrOfTerminalPipeWaterQuantaty);
   }
 
-  // //분기파이프 관경(주관)
+  // 각 관경에 따른 물량들을 더해서 총합을 변수에 저장
+  let amountOfTerminalPipeWaterQuantaty = 0;
+  for (i = 0; i < arrOfTerminalPipeWaterQuantaty.length; i++) {
+    amountOfTerminalPipeWaterQuantaty += arrOfTerminalPipeWaterQuantaty[i];
+  }
+
+  // //분기파이프 관경(주관)을 산출.
   pipeDiameterOfDevidePipe = Math.sqrt(
-    (ReviseWaterQuantatyOfTerminalPipe * coefficientOfRoughnessPVC * 4) /
-      (3.14 * 2)
+    (amountOfTerminalPipeWaterQuantaty * coefficientOfRoughnessPVC * 4) /
+      (3.14 * 2 * numberOfTerminalPipe)
   );
 
   alert(
